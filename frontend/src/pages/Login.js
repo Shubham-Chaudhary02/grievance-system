@@ -17,12 +17,12 @@ function Login() {
         data
       );
 
-      // save token
+      // token save
       localStorage.setItem("token", res.data.token);
 
-      alert("Login Success ✅");
+      alert("Login Successful ✅");
 
-      // redirect to dashboard
+      // dashboard pe redirect
       navigate("/dashboard");
     } catch (err) {
       alert("Login Failed ❌");
@@ -34,11 +34,13 @@ function Login() {
       <h2>Login</h2>
 
       <input
+        type="email"
         placeholder="Email"
         onChange={(e) =>
           setData({ ...data, email: e.target.value })
         }
-      /><br /><br />
+      />
+      <br /><br />
 
       <input
         type="password"
@@ -46,13 +48,14 @@ function Login() {
         onChange={(e) =>
           setData({ ...data, password: e.target.value })
         }
-      /><br /><br />
+      />
+      <br /><br />
 
       <button onClick={login}>Login</button>
 
       <br /><br />
 
-      {/* 🔥 IMPORTANT LINK */}
+      {/* 🔥 REGISTER LINK */}
       <p>
         Don’t have an account?{" "}
         <Link to="/register">Register</Link>
