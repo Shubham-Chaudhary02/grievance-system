@@ -1,9 +1,13 @@
 import { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 function Login() {
-  const [data, setData] = useState({ email: "", password: "" });
+  const [data, setData] = useState({
+    email: "",
+    password: "",
+  });
+
   const navigate = useNavigate();
 
   const login = async () => {
@@ -13,16 +17,20 @@ function Login() {
         data
       );
 
+      // save token
       localStorage.setItem("token", res.data.token);
+
       alert("Login Success ✅");
+
+      // redirect to dashboard
       navigate("/dashboard");
     } catch (err) {
-      alert(err.response?.data || "Login Failed ❌");
+      alert("Login Failed ❌");
     }
   };
 
   return (
-    <div>
+    <div style={{ padding: "20px" }}>
       <h2>Login</h2>
 
       <input
@@ -30,7 +38,7 @@ function Login() {
         onChange={(e) =>
           setData({ ...data, email: e.target.value })
         }
-      />
+      /><br /><br />
 
       <input
         type="password"
@@ -38,9 +46,17 @@ function Login() {
         onChange={(e) =>
           setData({ ...data, password: e.target.value })
         }
-      />
+      /><br /><br />
 
       <button onClick={login}>Login</button>
+
+      <br /><br />
+
+      {/* 🔥 IMPORTANT LINK */}
+      <p>
+        Don’t have an account?{" "}
+        <Link to="/register">Register</Link>
+      </p>
     </div>
   );
 }

@@ -21,12 +21,12 @@ function Register() {
       alert("Registered Successfully ✅");
       navigate("/");
     } catch (err) {
-      alert(err.response?.data || "Register Error ❌");
+      alert("Error ❌");
     }
   };
 
   return (
-    <div>
+    <div style={{ padding: "20px" }}>
       <h2>Register</h2>
 
       <input
@@ -34,14 +34,14 @@ function Register() {
         onChange={(e) =>
           setData({ ...data, name: e.target.value })
         }
-      />
+      /><br /><br />
 
       <input
         placeholder="Email"
         onChange={(e) =>
           setData({ ...data, email: e.target.value })
         }
-      />
+      /><br /><br />
 
       <input
         type="password"
@@ -49,7 +49,7 @@ function Register() {
         onChange={(e) =>
           setData({ ...data, password: e.target.value })
         }
-      />
+      /><br /><br />
 
       <button onClick={register}>Register</button>
     </div>
